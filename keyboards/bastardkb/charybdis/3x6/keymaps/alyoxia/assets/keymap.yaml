@@ -1,0 +1,175 @@
+layout:
+  qmk_keyboard: bastardkb/charybdis/3x6/v2/splinky_3
+  qmk_layout: LAYOUT
+layers:
+  BASE:
+  - APP
+  - Q
+  - W
+  - F
+  - P
+  - B
+  - J
+  - L
+  - U
+  - Y
+  - ''''
+  - DEL
+  - F5
+  - A
+  - R
+  - S
+  - T
+  - G
+  - M
+  - N
+  - E
+  - I
+  - O
+  - ;
+  - ''
+  - {t: Z, h: LGUI}
+  - {t: X, h: LALT}
+  - {t: C, h: LCTL}
+  - {t: D, h: LSFT}
+  - V
+  - K
+  - {t: H, h: RSFT}
+  - {t: '-', h: RCTL}
+  - {h: MOUSE, t: ','}
+  - {t: '.', h: RALT}
+  - CW_TOGG
+  - ESC
+  - {h: NAVI, t: SPC}
+  - {h: NUMERAL, t: TAB}
+  - {h: SYMBOLS, t: ENT}
+  - {h: NUMERAL, t: BSPC}
+  NUMERAL:
+  - '`'
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
+  - DEL
+  -
+  - A
+  - B
+  - C
+  - D
+  -
+  - '*'
+  - '4'
+  - '5'
+  - '6'
+  - '+'
+  - '='
+  -
+  -
+  - E
+  - F
+  - X
+  - '.'
+  - '/'
+  - '1'
+  - '2'
+  - '3'
+  - '-'
+  -
+  -
+  -
+  -
+  -
+  -
+  SYMBOLS:
+  - '~'
+  - '!'
+  - '@'
+  - '#'
+  - '$'
+  - '%'
+  - '^'
+  - '&'
+  - '*'
+  - '('
+  - ')'
+  - DEL
+  -
+  - '{'
+  - '}'
+  - '('
+  - ')'
+  -
+  -
+  - '['
+  - ']'
+  - '{'
+  - '}'
+  - '|'
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  NAVIGATION:
+  -
+  - F1
+  - F2
+  - F3
+  - F4
+  -
+  -
+  - PGUP
+  - '🠉'
+  - HOME
+  -
+  - DEL
+  -
+  - F5
+  - F6
+  - F7
+  - F8
+  -
+  -
+  - '🠈'
+  - '🠋'
+  - '🠊'
+  -
+  -
+  -
+  - F9
+  - F10
+  - F11
+  - F12
+  -
+  -
+  - PGDN
+  -
+  - END
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+draw_config:
+  glyph_tap_size: 18
+  dark_mode: false
