@@ -333,18 +333,20 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
 
 #ifdef POINTING_DEVICE_ENABLE
-#    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+
+    #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
     if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
         if (auto_pointer_layer_timer == 0) {
             layer_on(LAYER_POINTER);
-#        ifdef RGB_MATRIX_ENABLE
+        #ifdef RGB_MATRIX_ENABLE
             rgb_matrix_mode_noeeprom(RGB_MATRIX_NONE);
             rgb_matrix_sethsv_noeeprom(HSV_GREEN);
-#        endif // RGB_MATRIX_ENABLE
+        #endif // RGB_MATRIX_ENABLE
         }
         auto_pointer_layer_timer = timer_read();
     }
+    #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
     return mouse_report;
 }
 
@@ -357,5 +359,4 @@ void matrix_scan_user(void) {
 #        endif // RGB_MATRIX_ENABLE
     }
 }
-#    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #endif     // POINTING_DEVICE_ENABLE
