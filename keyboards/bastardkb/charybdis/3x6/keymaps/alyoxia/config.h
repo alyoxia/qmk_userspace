@@ -77,7 +77,7 @@
 // If need, reduce mouse events frequency to cope with MCU load;
 // note that it delays (but smoothens) drag-scrolling, particularly when
 // queued (ie. `CHARYBDIS_DRAGSCROLL_SEND_COALESCE` undefined).
-// #undef  POINTING_DEVICE_TASK_THROTTLE_MS
+#undef  POINTING_DEVICE_TASK_THROTTLE_MS
 #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 
 #define EECONFIG_USER_DATA_SIZE 20
