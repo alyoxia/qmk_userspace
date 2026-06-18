@@ -357,6 +357,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 }
 
 void matrix_scan_user(void) {
+    #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
     if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
         auto_pointer_layer_timer = 0;
         layer_off(LAYER_POINTER);
@@ -364,6 +365,7 @@ void matrix_scan_user(void) {
         rgb_matrix_mode_noeeprom(RGB_MATRIX_DEFAULT_MODE);
 #        endif // RGB_MATRIX_ENABLE
     }
+    #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
