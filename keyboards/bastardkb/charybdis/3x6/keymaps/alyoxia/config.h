@@ -86,9 +86,9 @@
 #define AUTO_MOUSE_DEFAULT_LAYER 2
 
 // Acceleration settings
-#define POINTING_DEVICE_ACCEL_TAKEOFF 1.18     // lower/higher value = curve takes off more smoothly/abruptly
-#define POINTING_DEVICE_ACCEL_GROWTH_RATE 0.56 // lower/higher value = curve reaches its upper limit slower/faster
-#define POINTING_DEVICE_ACCEL_OFFSET 3.6       // lower/higher value = acceleration kicks in earlier/later
+#define POINTING_DEVICE_ACCEL_TAKEOFF 2.0      // lower/higher value = curve takes off more smoothly/abruptly
+#define POINTING_DEVICE_ACCEL_GROWTH_RATE 0.25 // lower/higher value = curve reaches its upper limit slower/faster
+#define POINTING_DEVICE_ACCEL_OFFSET 2.2       // lower/higher value = acceleration kicks in earlier/later
 #define POINTING_DEVICE_ACCEL_LIMIT 0.2        // lower limit of accel curve (minimum acceleration factor)
 
 #endif // POINTING_DEVICE_ENABLE

@@ -92,7 +92,7 @@ enum charybdis_keymap_layers {
  */
 #define LAYOUT_LAYER_POINTER                                                                           \
     _________________DEAD_HALF_ROW_________________,  KC_AGIN,KC_UNDO,KC_BTN3,KC_BTN5,DPI_MOD,_______, \
-    MA_TOGG,MA_TKOF,MA_GROW,MA_OFST,MA_LMT,_______,  KC_PSTE,KC_BTN1,KC_BTN2,KC_BTN4,S_D_MOD,_______, \
+    MA_TOGG,MA_TKOF,MA_GROW,MA_OFST,MA_LMT,DB_TOGG,  KC_PSTE,KC_BTN1,KC_BTN2,KC_BTN4,S_D_MOD,_______, \
     ________________HOME_ROW_GACS_L________________,   KC_CUT,KC_COPY,DRGSCRL,_______,SNIPING, SNIPT, \
                             KC_BTN2,KC_BTN1,_______,  _______,_______
 
@@ -191,7 +191,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 // https://github.com/qmk/qmk_firmware/blob/master/docs/faq_debug.md
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
-  debug_enable=false;
+  debug_enable=true;
   debug_matrix=false;
   debug_keyboard=false;
   //debug_mouse=true;
