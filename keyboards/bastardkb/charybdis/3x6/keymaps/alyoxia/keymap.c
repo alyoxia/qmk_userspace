@@ -17,6 +17,12 @@
 #include QMK_KEYBOARD_H
 
 
+#ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#    include "timer.h"
+static uint16_t auto_pointer_layer_timer = 0;
+#endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+
+
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_NAVIGATION,
@@ -359,4 +365,9 @@ void matrix_scan_user(void) {
 #        endif // RGB_MATRIX_ENABLE
     }
 }
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    return process_record_pointing_device_accel(keycode, record);
+}
+
 #endif     // POINTING_DEVICE_ENABLE

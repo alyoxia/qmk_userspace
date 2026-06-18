@@ -85,6 +85,7 @@
 //#define POINTING_DEVICE_DEBUG
 #define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
+#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 2
 
 // Acceleration settings
 #define POINTING_DEVICE_ACCEL_TAKEOFF 2.0      // lower/higher value = curve takes off more smoothly/abruptly
