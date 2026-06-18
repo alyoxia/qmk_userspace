@@ -194,7 +194,7 @@ void keyboard_post_init_user(void) {
   debug_enable=true;
   debug_matrix=false;
   debug_keyboard=false;
-  //debug_mouse=true;
+  debug_mouse=false;
 }
 
 #ifdef COMBO_ENABLE

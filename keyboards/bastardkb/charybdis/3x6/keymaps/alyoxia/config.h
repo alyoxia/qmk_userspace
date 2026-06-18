@@ -91,4 +91,7 @@
 #define POINTING_DEVICE_ACCEL_OFFSET 2.2       // lower/higher value = acceleration kicks in earlier/later
 #define POINTING_DEVICE_ACCEL_LIMIT 0.2        // lower limit of accel curve (minimum acceleration factor)
 
+// Try to turn off debugging on PMW3360
+#define NO_DEBUG
+#define NO_PRINT
 #endif // POINTING_DEVICE_ENABLE
