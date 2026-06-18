@@ -37,6 +37,7 @@ enum charybdis_keymap_layers {
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
 #    define DPI_MOD KC_NO
+#    define DPI_RMOD KC_NO
 #    define S_D_MOD KC_NO
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
@@ -92,7 +93,7 @@ enum charybdis_keymap_layers {
  */
 #define LAYOUT_LAYER_POINTER                                                                           \
     _________________DEAD_HALF_ROW_________________,  KC_AGIN,KC_UNDO,KC_BTN3,KC_BTN5,DPI_MOD,_______, \
-    MA_TOGG,MA_TKOF,MA_GROW,MA_OFST,MA_LMT,DB_TOGG,  KC_PSTE,KC_BTN1,KC_BTN2,KC_BTN4,S_D_MOD,_______, \
+    MA_TOGG,MA_TKOF,MA_GROW,MA_OFST,MA_LMT,DB_TOGG,  KC_PSTE,KC_BTN1,KC_BTN2,KC_BTN4,DPI_RMOD,_______, \
     ________________HOME_ROW_GACS_L________________,   KC_CUT,KC_COPY,DRGSCRL,_______,SNIPING, SNIPT, \
                             KC_BTN2,KC_BTN1,_______,  _______,_______
 
@@ -194,19 +195,9 @@ void keyboard_post_init_user(void) {
   debug_enable=true;
   debug_matrix=false;
   debug_keyboard=false;
-  debug_mouse=false;
 }
 
 #ifdef COMBO_ENABLE
-/*
-combo_t key_combos[] = {
-    COMBO(combo_layer_lock_nav, TG(LAYER_NAVIGATION)),
-    COMBO(combo_layer_lock_ptr, TG(LAYER_POINTER)),
-    COMBO(combo_layer_lock_fun, TG(LAYER_FUNCTION)),
-    COMBO(combo_layer_lock_num, TG(LAYER_NUMERAL)),
-    COMBO(combo_layer_lock_sym, TG(LAYER_SYMBOLS)),
-};
-*/
 combo_t key_combos[] = {
     COMBO(combo_layer_lock_nav, TG(LAYER_NAVIGATION)),
     COMBO(combo_layer_lock_ptr, TG(LAYER_POINTER)),
@@ -214,32 +205,6 @@ combo_t key_combos[] = {
     COMBO(combo_layer_lock_sym, TG(LAYER_SYMBOLS)),
 };
 #endif
-
-/*
-bool caps_word_press_user(uint16_t keycode) {
-    switch (keycode) {
-        // Keycodes that continue Caps Word, with shift applied.
-        case KC_A ... KC_Z:
-        case KC_MINS:
-            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
-            return true;
-
-        // Keycodes that continue Caps Word, without shifting.
-        case KC_1 ... KC_0:
-        case KC_BSPC:
-        case KC_DEL:
-        case KC_UNDS:
-        // extra from defaults
-        case KC_SLSH:
-        case KC_LEFT:
-        case KC_RGHT:
-            return true;
-
-        default:
-            return false;  // Deactivate Caps Word.
-    }
-}
-*/
 
 #ifdef RGB_MATRIX_ENABLE
 // Forward-declare this helper function since it is defined in
@@ -365,3 +330,32 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     return false;
 }
 #endif // RGB_MATRIX_ENABLE
+
+
+#ifdef POINTING_DEVICE_ENABLE
+#    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
+        if (auto_pointer_layer_timer == 0) {
+            layer_on(LAYER_POINTER);
+#        ifdef RGB_MATRIX_ENABLE
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_NONE);
+            rgb_matrix_sethsv_noeeprom(HSV_GREEN);
+#        endif // RGB_MATRIX_ENABLE
+        }
+        auto_pointer_layer_timer = timer_read();
+    }
+    return mouse_report;
+}
+
+void matrix_scan_user(void) {
+    if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
+        auto_pointer_layer_timer = 0;
+        layer_off(LAYER_POINTER);
+#        ifdef RGB_MATRIX_ENABLE
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_DEFAULT_MODE);
+#        endif // RGB_MATRIX_ENABLE
+    }
+}
+#    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#endif     // POINTING_DEVICE_ENABLE

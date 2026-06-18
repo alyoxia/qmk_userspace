@@ -77,13 +77,14 @@
 // If need, reduce mouse events frequency to cope with MCU load;
 // note that it delays (but smoothens) drag-scrolling, particularly when
 // queued (ie. `CHARYBDIS_DRAGSCROLL_SEND_COALESCE` undefined).
-#undef  POINTING_DEVICE_TASK_THROTTLE_MS
-#define POINTING_DEVICE_TASK_THROTTLE_MS 5
+// #undef  POINTING_DEVICE_TASK_THROTTLE_MS
+// #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 
 #define EECONFIG_USER_DATA_SIZE 20
 
-#define POINTING_DEVICE_DEBUG
-#define AUTO_MOUSE_DEFAULT_LAYER 2
+//#define POINTING_DEVICE_DEBUG
+#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
 
 // Acceleration settings
 #define POINTING_DEVICE_ACCEL_TAKEOFF 2.0      // lower/higher value = curve takes off more smoothly/abruptly
