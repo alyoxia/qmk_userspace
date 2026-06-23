@@ -99,7 +99,7 @@ enum charybdis_keymap_layers {
  */
 #define LAYOUT_LAYER_POINTER                                                                           \
     _________________DEAD_HALF_ROW_________________,  KC_AGIN,KC_UNDO,KC_BTN3,KC_BTN5,DPI_MOD,_______, \
-    MA_TOGG,MA_TKOF,MA_GROW,MA_OFST,MA_LMT,DB_TOGG,  KC_PSTE,KC_BTN1,KC_BTN2,KC_BTN4,DPI_RMOD,_______, \
+    _______,_______,_______,_______,_______,DB_TOGG,  KC_PSTE,KC_BTN1,KC_BTN2,KC_BTN4,DPI_RMOD,_______, \
     ________________HOME_ROW_GACS_L________________,   KC_CUT,KC_COPY,DRGSCRL,_______,SNIPING, SNIPT, \
                             KC_BTN2,KC_BTN1,_______,  _______,_______
 
@@ -199,8 +199,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
   debug_enable=true;
-  debug_matrix=false;
-  debug_keyboard=false;
+  debug_matrix=true;
+  debug_keyboard=true;
 }
 
 #ifdef COMBO_ENABLE
