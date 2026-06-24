@@ -368,8 +368,4 @@ void matrix_scan_user(void) {
     #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    return process_record_pointing_device_accel(keycode, record);
-}
-
 #endif     // POINTING_DEVICE_ENABLE
