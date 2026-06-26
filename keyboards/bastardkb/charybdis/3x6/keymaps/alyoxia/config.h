@@ -93,6 +93,4 @@
 #define POINTING_DEVICE_ACCEL_OFFSET 2.2       // lower/higher value = acceleration kicks in earlier/later
 #define POINTING_DEVICE_ACCEL_LIMIT 0.2        // lower limit of accel curve (minimum acceleration factor)
 
-#undef RGB_MATRIX_ENABLE
-
 #endif // POINTING_DEVICE_ENABLE
